@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo de Investigación</title>
+ <style>
+  :root {
+    --primary: #1fa39a;
+    --primary-dark: #167f79;
+    --accent: #8f2442;
+    --accent-soft: #f6e9ee;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --bg: #f6fbfb;
+    --bg-soft: #eef7f6;
+    --white: #ffffff;
+    --border: #d9ece9;
+    --shadow: 0 12px 35px rgba(20, 72, 68, 0.10);
+    --shadow-hover: 0 18px 45px rgba(20, 72, 68, 0.16);
+    --radius: 22px;
+    --maxw: 1240px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(31,163,154,0.06), transparent 30%),
+      radial-gradient(circle at top right, rgba(143,36,66,0.05), transparent 28%),
+      var(--bg);
+    line-height: 1.65;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .container {
+    width: min(100% - 2rem, var(--maxw));
+    margin: 0 auto;
+  }
+
+  .topbar {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    color: white;
+    font-size: 0.95rem;
+    padding: 0.65rem 1rem;
+  }
+
+  .topbar .container,
+  .navbar .container,
+  .footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(217,236,233,0.9);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 0;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .brand img {
+    height: 44px;
+    width: auto;
+  }
+
+  .brand small {
+    display: block;
+    font-weight: 500;
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-top: 0.15rem;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    font-weight: 700;
+    color: #374151;
+    padding: 0.35rem 0.2rem;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.25s ease;
+  }
+
+  .nav-links a:hover {
+    color: var(--primary);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    padding: 0.9rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 10px 24px rgba(31,163,154,0.20);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(31,163,154,0.24);
+  }
+
+  .btn.secondary {
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    box-shadow: none;
+  }
+
+  .btn.secondary:hover {
+    background: rgba(255,255,255,0.16);
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(115deg, rgba(7,27,29,0.72), rgba(92,23,45,0.62)),
+      url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80') center/cover;
+    color: white;
+    padding: 6.5rem 0 5rem;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,255,255,0.14), transparent 22%),
+      radial-gradient(circle at 80% 10%, rgba(255,255,255,0.10), transparent 18%);
+    pointer-events: none;
+  }
+
+  .hero .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.22);
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    backdrop-filter: blur(8px);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4.4rem);
+    line-height: 1.03;
+    margin: 0 0 1rem;
+    max-width: 11ch;
+    letter-spacing: -0.04em;
+  }
+
+  .hero p {
+    font-size: 1.08rem;
+    max-width: 62ch;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.8rem;
+  }
+
+  .hero-panel {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .stat-card,
+  .mini-stat {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.20);
+    border-radius: var(--radius);
+    padding: 1.35rem;
+    backdrop-filter: blur(12px);
+  }
+
+  .stat-card h3 {
+    margin: 0;
+    font-size: 2.25rem;
+    line-height: 1;
+  }
+
+  .mini-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 1rem;
+  }
+
+  .mini-stat strong {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section.alt {
+    background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(238,247,246,0.9));
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.95rem, 3vw, 2.8rem);
+    margin: 0;
+    color: #111827;
+    letter-spacing: -0.03em;
+  }
+
+  .section-header p {
+    margin: 0;
+    color: var(--muted);
+    max-width: 65ch;
+    font-size: 1.02rem;
+  }
+
+  .cards-3,
+  .cards-4,
+  .news-grid,
+  .team-grid,
+  .grid2,
+  .impact-grid,
+  .logo-strip {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .cards-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .cards-4 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .team-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+  .news-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .grid2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .impact-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .logo-strip { grid-template-columns: repeat(4, minmax(0,1fr)); }
+
+  .card {
+    background: rgba(255,255,255,0.92);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: #c5e6e1;
+  }
+
+  .card h3, .card h4 {
+    margin-top: 0.2rem;
+    margin-bottom: 0.65rem;
+    line-height: 1.22;
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.36rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 0.82rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .muted { color: var(--muted); }
+
+  .search-box {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr auto;
+    gap: 0.8rem;
+    padding: 1rem;
+    background: rgba(255,255,255,0.95);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    margin-top: -2.4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .search-box input,
+  .search-box select {
+    width: 100%;
+    border: 1px solid var(--border);
+    background: #fbfefe;
+    border-radius: 16px;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  .feature-list,
+  .pub-list,
+  .card ul {
+    padding-left: 1.15rem;
+  }
+
+  .feature-list li,
+  .pub-list li,
+  .card ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .line-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .line-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -40px -40px auto;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(31,163,154,0.12), transparent 65%);
+    border-radius: 50%;
+  }
+
+  .team-card {
+    text-align: center;
+    overflow: hidden;
+    padding-top: 1.8rem;
+  }
+
+  .avatar {
+    width: 118px;
+    height: 118px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #f5f7f8;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  }
+
+  .role-badge {
+    display: inline-block;
+    background: #edf7f6;
+    color: var(--primary-dark);
+    padding: 0.3rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .team-card a {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .project-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-cover {
+    height: 180px;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .news-card {
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .news-card .news-body {
+    padding: 1.25rem;
+  }
+
+  .news-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+
+  .impact-card {
+    text-align: center;
+    padding: 2rem 1.2rem;
+  }
+
+  .impact-card strong {
+    display: block;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    line-height: 1;
+    margin-bottom: 0.45rem;
+  }
+
+  .logo-box {
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1rem;
+    text-align: center;
+    color: var(--muted);
+    font-weight: 700;
+    box-shadow: var(--shadow);
+  }
+
+  .toggle-lineas {
+    float: right;
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  .pdf-badge {
+  display: inline-block;
+  margin-left: 0.6rem;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 6px;
+  background: #e0ecff;
+  color: #1d4ed8;
+}
+
+.pdf-badge:hover {
+  background: #c7dcff;
+}
+
+  .cta {
+    background:
+      linear-gradient(135deg, rgba(31,163,154,0.96), rgba(143,36,66,0.92)),
+      url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80') center/cover;
+    color: white;
+    border-radius: 30px;
+    padding: 2.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: var(--shadow-hover);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 1.5rem;
+  }
+
+  .footer {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 0 0 2.5rem;
+    margin-top: 4rem;
+  }
+
+  .footer-top {
+    padding: 3rem 0 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer a { color: white; }
+
+  @media (max-width: 1080px) {
+    .hero-grid,
+    .cards-3,
+    .cards-4,
+    .team-grid,
+    .news-grid,
+    .grid2,
+    .impact-grid,
+    .contact-grid,
+    .logo-strip,
+    .search-box {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .navbar .container {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .nav-links {
+      justify-content: center;
+      padding-bottom: 1rem;
+    }
+  }
+
+  @media (max-width: 680px) {
+    .cards-3,
+    .cards-4,
+    .team-grid,
+    .news-grid,
+    .grid2,
+    .impact-grid,
+    .contact-grid,
+    .logo-strip,
+    .search-box,
+    .mini-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .topbar .container,
+    .footer .container,
+    .section-header,
+    .cta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    h1 {
+      max-width: 100%;
+    }
+  }
+
+.subsection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.pub-list li {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.card h4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.toggle-lineas {
+  cursor: pointer;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.pub-categories {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.4rem;
+  margin-top: 1.5rem;
+}
+
+.pub-category-card {
+  background: rgba(255,255,255,0.92);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.pub-category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: #c5e6e1;
+}
+
+.pub-category-card h3 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+.pub-year {
+  border-top: 1px solid #edf2f2;
+  padding-top: 0.9rem;
+  margin-top: 0.9rem;
+}
+
+.pub-year:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.pub-year-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  color: #111827;
+  cursor: pointer;
+}
+
+.pub-year-title span:last-child {
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.pub-list {
+  margin-top: 0.8rem;
+  padding-left: 1.1rem;
+}
+
+.pub-list li {
+  margin-bottom: 0.8rem;
+  line-height: 1.55;
+}
+
+.pub-list a {
+  color: #2563eb;
+  font-weight: 600;
+  margin-left: 0.35rem;
+  text-decoration: none;
+}
+
+.pub-list a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 1100px) {
+  .pub-categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .pub-categories {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grupo de Investigación</title>
+
+  <style>
+    :root {
+      --primary: #1fa39a;
+      --primary-dark: #167f79;
+      --accent: #8f2442;
+      --accent-soft: #f6e9ee;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f6fbfb;
+      --bg-soft: #eef7f6;
+      --white: #ffffff;
+      --border: #d9ece9;
+      --shadow: 0 12px 35px rgba(20, 72, 68, 0.10);
+      --shadow-hover: 0 18px 45px rgba(20, 72, 68, 0.16);
+      --radius: 22px;
+      --maxw: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(31,163,154,0.06), transparent 30%),
+        radial-gradient(circle at top right, rgba(143,36,66,0.05), transparent 28%),
+        var(--bg);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(100% - 2rem, var(--maxw));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+      font-size: 0.95rem;
+      padding: 0.65rem 1rem;
+    }
+
+    .topbar .container,
+    .navbar .container,
+    .footer .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(217,236,233,0.9);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 0.9rem 0;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand img {
+      height: 44px;
+      width: auto;
+    }
+
+    .brand small {
+      display: block;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin-top: 0.15rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-weight: 700;
+      color: #374151;
+      padding: 0.35rem 0.2rem;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 0.9rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 10px 24px rgba(31,163,154,0.20);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(31,163,154,0.24);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.08);
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      box-shadow: none;
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255,255,255,0.16);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(115deg, rgba(7,27,29,0.72), rgba(92,23,45,0.62)),
+        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80') center/cover;
+      color: white;
+      padding: 6.5rem 0 5rem;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.14), transparent 22%),
+        radial-gradient(circle at 80% 10%, rgba(255,255,255,0.10), transparent 18%);
+      pointer-events: none;
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      line-height: 1.03;
+      margin: 0 0 1rem;
+      max-width: 11ch;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      max-width: 62ch;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .stat-card,
+    .mini-stat {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .stat-card h3 {
+      margin: 0;
+      font-size: 2.25rem;
+      line-height: 1.1;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 1rem;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section.alt {
+      background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(238,247,246,0.9));
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.95rem, 3vw, 2.8rem);
+      margin: 0;
+      color: #111827;
+      letter-spacing: -0.03em;
+    }
+
+    .section-header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 65ch;
+      font-size: 1.02rem;
+    }
+
+    .cards-3,
+    .cards-4,
+    .news-grid,
+    .team-grid,
+    .grid2,
+    .contact-grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .cards-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .cards-4 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .team-grid { grid-template-columns: repeat(4, minmax(0,1fr)); }
+    .news-grid { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .grid2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .contact-grid { grid-template-columns: 1.2fr 0.8fr; }
+
+    .card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: #c5e6e1;
+    }
+
+    .card h3, .card h4 {
+      margin-top: 0.2rem;
+      margin-bottom: 0.65rem;
+      line-height: 1.22;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 0.36rem 0.75rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    .search-box {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr auto;
+      gap: 0.8rem;
+      padding: 1rem;
+      background: rgba(255,255,255,0.95);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-top: -2.4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .search-box input,
+    .search-box select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fbfefe;
+      border-radius: 16px;
+      padding: 1rem 1rem;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .feature-list,
+    .pub-list,
+    .card ul {
+      padding-left: 1.15rem;
+    }
+
+    .feature-list li,
+    .pub-list li,
+    .card ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .line-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .line-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(31,163,154,0.12), transparent 65%);
+      border-radius: 50%;
+    }
+
+    .team-card {
+      text-align: center;
+      overflow: hidden;
+      padding-top: 1.8rem;
+    }
+
+    .avatar {
+      width: 118px;
+      height: 118px;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #f5f7f8;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+
+    .role-badge {
+      display: inline-block;
+      background: #edf7f6;
+      color: var(--primary-dark);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .team-card a {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-cover {
+      height: 180px;
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .news-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .news-card .news-body {
+      padding: 1.25rem;
+    }
+
+    .news-card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+
+    .toggle-lineas {
+      float: right;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+
+    .cta {
+      background:
+        linear-gradient(135deg, rgba(31,163,154,0.96), rgba(143,36,66,0.92)),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: white;
+      border-radius: 30px;
+      padding: 2.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: var(--shadow-hover);
+    }
+
+    .footer {
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 0 0 2.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-top {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer a { color: white; }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .cards-3,
+      .cards-4,
+      .team-grid,
+      .news-grid,
+      .grid2,
+      .contact-grid,
+      .search-box {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar .container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links {
+        justify-content: center;
+        padding-bottom: 1rem;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .cards-3,
+      .cards-4,
+      .team-grid,
+      .news-grid,
+      .grid2,
+      .contact-grid,
+      .search-box,
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar .container,
+      .footer .container,
+      .section-header,
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+    }
+  </style>
+
+  <script>
+    function toggleProyecto(elemento) {
+      const extra = elemento.previousElementSibling;
+      if (extra.style.display === "none" || extra.style.display === "") {
+        extra.style.display = "block";
+        elemento.textContent = "Leer menos";
+      } else {
+        extra.style.display = "none";
+        elemento.textContent = "Leer más";
+      }
+    }
+
+    function toggleAnio(id, boton) {
+      const contenido = document.getElementById(id);
+      if (contenido.style.display === "none" || contenido.style.display === "") {
+        contenido.style.display = "block";
+        boton.textContent = "−";
+      } else {
+        contenido.style.display = "none";
+        boton.textContent = "+";
+      }
+    }
+
+    function toggleBloque(id, boton) {
+    const contenido = document.getElementById(id);
+
+    if (contenido.style.display === "none" || contenido.style.display === "") {
+      contenido.style.display = "block";
+      boton.textContent = "−";
+    } else {
+      contenido.style.display = "none";
+      boton.textContent = "+";
+    }
+  }
+
+  function filtrarLineas(event) {
+    event.preventDefault();
+
+    const texto = document.getElementById("busquedaInput").value.toLowerCase().trim();
+    const categoria = document.getElementById("busquedaCategoria").value.toLowerCase().trim();
+
+    const tarjetas = document.querySelectorAll("#lineas .line-card, #lineas .card");
+
+    tarjetas.forEach((tarjeta) => {
+      const contenido = tarjeta.textContent.toLowerCase();
+
+      const coincideTexto = texto === "" || contenido.includes(texto);
+      const coincideCategoria = categoria === "" || contenido.includes(categoria);
+
+      if (coincideTexto && coincideCategoria) {
+        tarjeta.style.display = "block";
+      } else {
+        tarjeta.style.display = "none";
+      }
+    });
+  }
+
+
+  </script>
+
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div>Grupo de Estadística y Aprendizaje con Datos · Departamento de Matemática, FCEyN, UNMdP.</div>
+      <div>Contacto: gead.lab@gmail.com</div>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container">
+      <a class="brand" href="#inicio">
+        <img src="logo.png" alt="Logo grupo">
+        <div>
+          Grupo de Investigación
+          <small>Modelización · Optimización · Ciencia de Datos</small>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#lineas">Líneas de Investigación</a>
+        <a href="#integrantes">Integrantes</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#transferencias">Transferencias</a>
+        <a href="#publicaciones">Publicaciones</a>
+        <a href="#novedades">Novedades</a>
+        </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Grupo de Estadística y Aprendizaje con Datos · UNMdP</span>
+          <h1>Modelos, datos e investigación con impacto</h1>
+          <p>
+            Somos un grupo de investigación del Departamento de Matemática que desarrolla herramientas de modelización, optimización, estadística y aprendizaje automático para abordar problemas complejos en contextos urbanos, naturales y socioeconómicos.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="#integrantes">Conocer al equipo</a>
+            <a class="btn secondary" href="#proyectos">Ver proyectos</a>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="stat-card">
+            <div class="tag" style="background:rgba(255,255,255,0.14); color:white;">GEAD</div>
+            <h3>Investigación interdisciplinaria</h3>
+            <p style="margin-top:0.7rem; color:rgba(255,255,255,0.9);">
+              Ciencia de datos, matemática aplicada y métodos estadísticos para producir conocimiento útil, transferible y de calidad.
+            </p>
+          </div>
+
+          <div class="mini-stats">
+            <div class="mini-stat">
+              <strong>10+</strong>
+              <span>integrantes activos</span>
+            </div>
+            <div class="mini-stat">
+              <strong>8</strong>
+              <span>líneas de trabajo</span>
+            </div>
+            <div class="mini-stat">
+              <strong>24+</strong>
+              <span>publicaciones</span>
+            </div>
+            <div class="mini-stat">
+              <strong>3</strong>
+              <span>áreas de transferencia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="container">
+  <form class="search-box" onsubmit="filtrarLineas(event)">
+    <input id="busquedaInput" type="text" placeholder="Buscar por nombre, tema o palabra clave" />
+    <select id="busquedaCategoria">
+      <option value="">Todas las líneas</option>
+      <option value="Aprendizaje automático">Aprendizaje automático</option>
+      <option value="Optimización">Optimización</option>
+      <option value="Series temporales">Series temporales</option>
+      <option value="Geoestadística">Geoestadística</option>
+    </select>
+    <button class="btn" type="submit">Buscar</button>
+  </form>
+</div>
+
+
+  <section class="section" id="lineas">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Líneas de investigación</h2>
+          <p>Algunas de las líneas en que trabajamos.</p>
+        </div>
+      </div>
+
+      <div class="cards-4">
+        <article class="card line-card">
+          <span class="tag">01</span>
+          <h3>Modelización y Optimización</h3>
+          <p class="muted">
+            Desarrollo de modelos matemáticos y técnicas de optimización aplicadas a problemas complejos.
+          </p>
+          <ul>
+            <li>Modelización</li>
+            <li>Optimización</li>
+          </ul>
+        </article>
+
+        <article class="card line-card">
+          <span class="tag">02</span>
+          <h3>Aprendizaje Automático</h3>
+          <p class="muted">
+            Métodos de aprendizaje supervisado y no supervisado para análisis y predicción.
+          </p>
+          <ul>
+            <li>Aprendizaje Automático</li>
+            <li>Aprendizaje Profundo</li>
+            <li>Selección de características</li>
+          </ul>
+        </article>
+
+        <article class="card line-card">
+          <span class="tag">03</span>
+          <h3>Series Temporales</h3>
+          <p class="muted">
+            Análisis y modelado de datos temporales en contextos reales.
+          </p>
+          <ul>
+            <li>Series temporales</li>
+          </ul>
+        </article>
+
+        <article class="card line-card">
+          <span class="tag">04</span>
+          <h3>Métodos Estadísticos</h3>
+          <p class="muted">
+            Técnicas de inferencia y análisis multivariado para el estudio de datos complejos.
+          </p>
+          <ul>
+            <li>Métodos estadísticos multivariados</li>
+            <li>Modelos lineales generalizados (GLMs)</li>
+          </ul>
+        </article>
+
+        <article class="card line-card">
+          <span class="tag">05</span>
+          <h3>Redes y Grafos</h3>
+          <p class="muted">
+            Estudio de sistemas complejos mediante estructuras de grafos y redes.
+          </p>
+          <ul>
+            <li>Grafos (redes)</li>
+          </ul>
+        </article>
+
+        <article class="card line-card">
+          <span class="tag">06</span>
+          <h3>Geoestadística</h3>
+          <p class="muted">
+            Modelos espaciales y espacio-temporales para el análisis de fenómenos geográficos.
+          </p>
+          <ul>
+            <li>Modelos geoestadísticos</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="integrantes" style="background:#fcfcfb;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Equipo de investigación</h2>
+          <p>El grupo está conformado por investigadores, docentes y becarios que trabajan en distintas líneas de investigación.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom:1rem;">Integrantes activos</h3>
+
+      <div class="team-grid">
+        <article class="card team-card">
+          <img class="avatar" src="mauro.png" alt="Mauro Chaparro">
+          <span class="role-badge">Director</span>
+          <h3>Dr. Mauro Chaparro</h3>
+          <p class="muted">Modelización, estadística y análisis de datos.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="ivan.png" alt="Iván Degano">
+          <span class="role-badge">Co-Director</span>
+          <h3>Dr. Iván Degano</h3>
+          <p class="muted">Optimización, redes y matemática aplicada.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="marcela.png" alt="Marcela Natal">
+          <span class="role-badge">Integrante</span>
+          <h3>Mg. Marcela Natal</h3>
+          <p class="muted">Estadística, investigación interdisciplinaria y docencia.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="gabriela.png" alt="Gabriela Ravena">
+          <span class="role-badge">Integrante</span>
+          <h3>Dra. Gabriela Ravena</h3>
+          <p class="muted">Teoría de grafos y estructuras discretas.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="aureliano.png" alt="Aureliano Guerrero">
+          <span class="role-badge">Integrante</span>
+          <h3>Dr. Aureliano Guerrero</h3>
+          <p class="muted">Modelado, análisis cuantitativo y aplicaciones.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="daniela.png" alt="Daniela Molinari">
+          <span class="role-badge">Integrante</span>
+          <h3>Lic. Daniela Molinari</h3>
+          <p class="muted">Análisis de datos y formación académica.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="milagros.png" alt="Milagros Echeverría">
+          <span class="role-badge">Integrante</span>
+          <h3>Lic. Milagros Echeverría</h3>
+          <p class="muted">Aprendizaje automático, series temporales y datos.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="jose.png" alt="José Campos">
+          <span class="role-badge">Integrante</span>
+          <h3>Prof. José Campos</h3>
+          <p class="muted">Didáctica, estadística y tecnologías educativas.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="paloma.png" alt="Paloma Mondino">
+          <span class="role-badge">Becaria CIC</span>
+          <h3>Prof. Paloma Mondino</h3>
+          <p class="muted">Problemas estadísticos y herramientas digitales.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+
+        <article class="card team-card">
+          <img class="avatar" src="valentina.png" alt="Valentina Cambre">
+          <span class="role-badge">Becaria CIN</span>
+          <h3>Valentina Cambre</h3>
+          <p class="muted">Apoyo a investigación y formación inicial.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+      </div>
+
+      <h3 style="margin-top:3rem; margin-bottom:1rem;">Integrantes (ver como poner el resto)</h3>
+
+      <div class="team-grid">
+        <article class="card team-card">
+          <img class="avatar" src="default.png" alt="Ex integrante">
+          <span class="role-badge">Ex integrante</span>
+          <h3>Nombre Apellido</h3>
+          <p class="muted">Participación en proyectos y actividades previas del grupo.</p>
+          <p><a href="#">Ver CV</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="proyectos">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Proyectos de investigación</h2>
+          <p>
+            El grupo desarrolla proyectos en ciencia de datos, modelado estadístico y optimización,
+            aplicados a problemáticas urbanas, ambientales, socioeconómicas, entre otras.
+          </p>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom: 1rem;">Proyectos de investigación vigentes</h3>
+
+      <div class="cards-3">
+        <article class="card project-card">
+          <div class="project-cover" style="background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80');"></div>
+          <span class="tag">2026–2027</span>
+          <h3>Ciencia de Datos y Modelado Estadístico en Ambientes Urbanos y Naturales</h3>
+
+          <p class="muted">
+            Desarrollo de modelos estadísticos y de aprendizaje automático para analizar sistemas complejos.
+          </p>
+
+          <div class="proyecto-extra" style="display: none;">
+            <p>
+              El uso de herramientas matemáticas es fundamental para tender un puente entre el conocimiento empírico generado en casos particulares y una visión integral de los patrones que emergen en el objeto de estudio.
+            </p>
+            <p>
+              El objetivo principal de este proyecto es investigar, aplicar y desarrollar metodologías que permitan identificar, comprender y predecir patrones y relaciones subyacentes en problemáticas complejas mediante herramientas avanzadas de ciencia de datos.
+            </p>
+            <p>
+              Se trabajará con datos de movilidad urbana, consumo energético, biodiversidad, calidad ambiental y variables socioeconómicas, aplicando técnicas de aprendizaje automático, series temporales, modelos espaciales y métodos estadísticos multivariados.
+            </p>
+            <p>
+              <a href="Proyecto_gead_2026.pdf" download class="btn">Descargar proyecto completo</a>
+            </p>
+          </div>
+
+          <span class="leer-mas" onclick="toggleProyecto(this)" style="cursor:pointer; font-weight:700; color: var(--primary);">
+            Leer más
+          </span>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-cover" style="background-image:url('https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&fit=crop&w=1200&q=80');"></div>
+          <span class="tag">2026–2027</span>
+          <h3>Título del segundo proyecto</h3>
+
+          <p class="muted">
+            Breve descripción del proyecto.
+          </p>
+
+          <div class="proyecto-extra" style="display: none;">
+            <p>
+              Acá podés agregar todo el desarrollo largo como hiciste en el primero.
+            </p>
+          </div>
+
+          <span class="leer-mas" onclick="toggleProyecto(this)" style="cursor:pointer; font-weight:700; color: var(--primary);">
+            Leer más
+          </span>
+        </article>
+      </div>
+
+      <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Proyectos anteriores</h3>
+
+      <div class="cards-3">
+        <article class="card project-card">
+          <div class="project-cover" style="background-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80');"></div>
+          <span class="tag">2024–2025</span>
+          <h3>Estimación temprana de la actividad económica regional con herramientas de aprendizaje automático: El caso del PBG en el Partido de Gral. Pueyrredon</h3>
+
+          <p class="muted">
+            Se propone estimar el PBG de General Pueyrredon mediante machine learning para actualizar y completar su serie histórica, mejorando el análisis de la economía local.
+          </p>
+
+          <div class="proyecto-extra" style="display: none;">
+            <p>
+              El indicador más adecuado para medir la actividad económica de una jurisdicción es el Producto, que se denomina PBG si hace referencia a una provincia, región o municipio. Es un indicador que se publica anualmente y, en Argentina, es estimado por algunas provincias, a menudo con retrasos y discontinuidades. A nivel municipal su estimación es aún más infrecuente.
+            </p>
+            <p>
+              El Municipio de Gral. Pueyrredon estima su PBG desde 1993, aunque el último dato corresponde a 2012. Recientemente, se comenzó a elaborar un índice mensual, desde enero 2004, capaz de reflejar la evolución de la economía local. Este indicador puede ser utilizado como aproximación del PBG, resolviendo sus limitaciones.
+            </p>
+            <p>
+              A tal fin, el proyecto empleará herramientas de machine learning y big data para seleccionar variables y entrenar modelos para predecir variables macroeconómicas. Se espera que esto permita, por un lado, completar los datos faltantes de la serie histórica del PBG y, por otro, disponer de información valiosa para analizar la evolución de la economía local y la toma de decisiones.
+            </p>
+            <p>
+              <a href="Proyecto_gead_2026.pdf" download class="btn">Descargar proyecto completo</a>
+            </p>
+          </div>
+
+          <span class="leer-mas" onclick="toggleProyecto(this)" style="cursor:pointer; font-weight:700; color: var(--primary);">
+            Leer más
+          </span>
+        </article>
+
+        <article class="card project-card">
+          <div class="project-cover" style="background-image:url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80');"></div>
+          <span class="tag">2021–2023</span>
+          <h3>Título del proyecto anterior</h3>
+
+          <p class="muted">
+            Breve descripción del proyecto.
+          </p>
+
+          <div class="proyecto-extra" style="display: none;">
+            <p>
+              Detalle del proyecto.
+            </p>
+          </div>
+
+          <span class="leer-mas" onclick="toggleProyecto(this)" style="cursor:pointer; font-weight:700; color: var(--primary);">
+            Leer más
+          </span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="transferencias">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Transferencia y vinculación</h2>
+          <p>
+            El grupo desarrolla actividades de transferencia, formación y asesoramiento,
+            aplicando herramientas de modelado matemático, estadística y ciencia de datos
+            a distintas problemáticas.
+          </p>
+        </div>
+      </div>
+
+      <h3 style="margin-bottom: 1rem;">Proyectos de transferencia realizados</h3>
+
+      <div class="cards-3">
+        <article class="card">
+          <span class="tag">Formación</span>
+          <h3>Dictado de cursos</h3>
+          <ul>
+            <li>Cursos de formación en estadística dictados a residentes e investigadores del INAREPS, y a docentes del nivel secundario.</li>
+            <li>Curso de Introducción a la Programación en Python dictado en CEUs.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Asesoramiento</span>
+          <h3>Asesoramiento técnico y metodológico</h3>
+          <ul>
+            <li>En metodología estadística aplicada a trabajos de investigación médica del HPC, del laboratorio Fares Taie.</li>
+            <li>Al Municipio de Azul para optimizar recorrido de transporte público.</li>
+            <li>Al Municipio de San Salvador de Jujuy para el desarrollo e implementación de sensores de bajo costo para el monitoreo de calidad del aire.</li>
+            <li>Desarrollo de una propuesta metodológica para la expansión del área de muestreo de <em>Lithodes Santolla</em>.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <span class="tag">Análisis</span>
+          <h3>Estudios aplicados</h3>
+          <ul>
+            <li>Distribución espacial de centolla comercial mediante geoestadística en Argentina.</li>
+            <li>Propagación de COVID-19 en la provincia de Chaco.</li>
+          </ul>
+        </article>
+      </div>
+
+      <h3 style="margin-top: 3rem; margin-bottom: 1rem;">Nuevas líneas de vinculación</h3>
+
+      <div class="cards-3">
+        <article class="card">
+          <h3>Colaboraciones futuras</h3>
+          <p class="muted">
+            Espacio para incorporar nuevas actividades de transferencia con instituciones
+            públicas, privadas o del sistema científico.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+<section id="publicaciones" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2>Publicaciones</h2>
+        <p>Producción científica del grupo organizada por tipo de publicación.</p>
+      </div>
+    </div>
+
+    <div class="pub-categories">
+
+      <!-- ARTÍCULOS -->
+      <div class="pub-category-card">
+        <span class="tag">Artículos</span>
+        <h3>Artículos en revistas científicas</h3>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('art2025', this.querySelector('.signo'))">
+            <span>Año 2025</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="art2025" style="display:none;">
+            <ul class="pub-list">
+              <li>
+                Orlando, V.M., Degano, I.L. &amp; Lotito, P.A. (2025).
+                <em>Social optimum in public transport networks when users choose strategies: analysis and comparison with Wardrop equilibrium</em>.
+                Annals of Operations Research, 349, 1785–1815.
+                <a href="https://doi.org/10.1007/s10479-025-06604-w" target="_blank" rel="noreferrer">DOI</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('art2024', this.querySelector('.signo'))">
+            <span>Año 2024</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="art2024" style="display:none;">
+            <ul class="pub-list">
+              <li>
+                Agüero ML, Alfonso JH, Boronat MS, Casado R, Di Gregorio M, Furno LY, Natal, M. et al. (2024).
+                <em>Efectos de la pandemia de COVID-19 en personas con discapacidad. Una mirada interdisciplinaria</em>.
+                Investigación en Discapacidad, 10(3), 171-182.
+                <a href="https://dx.doi.org/10.35366/118256" target="_blank" rel="noreferrer">DOI</a>
+              </li>
+
+              <li>
+                Acosta CM, Poliotto S, Abrego D, Bradley D, de Esteban S, Mir F, Ricci L, Natal M, Wallin M. (2024).
+                <em>Effect of an individualized lung protective ventilation on lung strain and stress in children undergoing laparoscopy: an observational cohort study</em>.
+                Anesthesiology, 140(3), 430-441.
+                <a href="https://doi.org/10.1097/ALN.0000000000004856" target="_blank" rel="noreferrer">DOI</a>
+              </li>
+
+              <li>
+                De Rito, M.; Borrelli, N.; Natal, M.; Fernández Honaine, M. (2024).
+                <em>Schoenoplectus californicus (Cyperaceae) amorphous silica contribution to the silicon cycle in pampean shallow lakes: a spatio-temporal analysis and Si-lignin relations</em>.
+                Australian Journal of Botany, 72(4).
+                <a href="https://doi.org/10.1071/BT23084" target="_blank" rel="noreferrer">DOI</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('art2023', this.querySelector('.signo'))">
+            <span>Año 2023</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="art2023" style="display:none;">
+            <ul class="pub-list">
+              <li>
+                Degano, I. L., Fiaschetti, L., &amp; Lotito, P. A. (2023).
+                <em>Location of faults based on deep learning with feature selection for meter placement in distribution power grids</em>.
+                International Journal of Emerging Electric Power Systems.
+              </li>
+
+              <li>
+                Firpo, C.; Militelli, M. I.; Chaparro, M. A. E.; Mauna, C.; Lértora, P. (2023).
+                <em>Clutch fullness index as an early indicator of overexploitation of the Southern King Crab: Implications for fisheries management</em>.
+                Ocean &amp; Coastal Management, 243.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('art2022', this.querySelector('.signo'))">
+            <span>Año 2022</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="art2022" style="display:none;">
+            <ul class="pub-list">
+              <li>
+                Chaparro, M. A. E.; Fernández, M.; Chaparro, Mauro A. E.; Böhnel, H. N. (2022).
+                <em>Magnetic proxies of continental shelf sediments and their implication for the benthic zone and shrimp fishing activities</em>.
+                Continental Shelf Research, 248.
+              </li>
+
+              <li>
+                Degano, I.; Ferrando, S.; González, A. (2022).
+                <em>No-Arbitrage Symmetries</em>.
+                Acta Mathematica Scientia, 42(4), 1373-1402.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONGRESOS -->
+      <div class="pub-category-card">
+        <span class="tag">Congresos y simposios</span>
+        <h3>Presentaciones y trabajos en eventos científicos</h3>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('cong2025', this.querySelector('.signo'))">
+            <span>Año 2025</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="cong2025" style="display:none;">
+            <ul class="pub-list">
+              <div class="pub-year">
+  
+      <li>
+        Echeverría, M. (2025).
+        <em>Predicción de flujo vehicular utilizando redes neuronales y selección de características</em>.
+        32° Jornadas de Jóvenes Investigadores (AUGM).
+        <br>
+        <span class="muted">Revista de las Jornadas de Jóvenes Investigadores AUGM (Nº 1)</span>
+
+        <a href="https://grupomontevideo.org/site/wp-content/uploads/2025/12/NUM-1-CS-Exactas.pdf"
+           target="_blank"
+           class="pdf-badge">
+          📄 PDF
+        </a>
+      </li>
+    
+              <li>
+                Mondino, P., Román, A., Campos, J., Natal, M. (2025).
+                <em>Explorando la representatividad de medidas estadísticas con Shiny. Una experiencia en nivel superior</em>.
+                <a href="https://doi.org/10.35537/10915/176893" target="_blank" rel="noreferrer">DOI</a>
+              </li>
+
+              <li>
+                Vivera, C., Campos, J., Tissoni, G., Palauro, L. (2025).
+                <em>Explorando las sucesiones numéricas con GeoGebra: una experiencia de enseñanza en la escuela secundaria</em>.
+                <a href="https://doi.org/10.35537/10915/176893" target="_blank" rel="noreferrer">DOI</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('cong2024', this.querySelector('.signo'))">
+            <span>Año 2024</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="cong2024" style="display:none;">
+            <ul class="pub-list">
+              <li>
+                Degano, I.L.; Lotito, P.A. (2024).
+                <em>Decoding COVID-19 Transmission: Spatial Mobility Pattern Analysis via Time-Varying Graphical Lasso</em>.
+                VIII Latin American Workshop on Optimization and Control.
+              </li>
+
+              <li>
+                Orlando, M.V.; Degano, I.L.; Lotito, P.A. (2024).
+                <em>An analysis of Wardrop equilibrium and social optimum in congested transit networks</em>.
+                VIII Latin American Workshop on Optimization and Control.
+              </li>
+
+              <li>
+                Mondino, P., Román, A., Campos, J., Natal, M. (2024).
+                <em>Diseño e implementación de problemas estadísticos mediados por Shiny de RStudio</em>.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('cong2023', this.querySelector('.signo'))">
+            <span>Año 2023</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="cong2023" style="display:none;">
+            <ul class="pub-list">
+              <li>
+                Chaparro, Mauro A. E.; Geiser Villavicencio-Pulido; Brasesco, C. (2023).
+                <em>Modelación de una interacción plantas-abejas-ácaros en una zona con clima templado en Argentina</em>.
+              </li>
+
+              <li>
+                Degano, I.; Fiaschetti, L.; Lotito, P. (2023).
+                <em>Location of faults based on deep learning with feature selection for meter placement in distribution power grids</em>.
+              </li>
+              <li>
+                Echeverría, M. (2023).
+                <em>Construcción de modelos para realizar predicciones con selección de características utilizando un modelo gráfico Lasso</em>.
+                 XXI Encuentro de Matemáticas Mar y Sierras.
+                 <a href="Charla MyS.pdf" target="_blank" class="pdf-badge">📄 PDF</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('cong2022_2020', this.querySelector('.signo'))">
+            <span>Años 2022–2020</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="cong2022_2020" style="display:none;">
+            <ul class="pub-list">
+              <li>Campos, J.; Vivera, C.; Nuñez, N.; Brummer, F. (2022). <em>El vídeo como recurso formativo en futuros profesores de matemática</em>.</li>
+              <li>Chaparro, M.; Natal, M. et al. (2022). <em>Grupo de Investigación: Análisis estadístico. Proyecto: Modelización estadística y matemática</em>.</li>
+              <li>Echeverría, M. (2022).<em>Modelo de predicción de tráfico en la ciudad de Mar del Plata, seleccionando una ubicación óptima de puntos de medición</em> [Póster].
+                  V Jornada de Investigación de la Universidad Nacional de Mar del Plata.<a href="Poster.pdf" target="_blank" class="pdf-badge">📄 Poster</a></li>
+              <li>Degano, I.; Lotito, P. (2021). <em>Estudio de movilidad a partir de casos detectados de COVID-19</em>.</li>
+              <li>Ferrante, J.; Campos, J. (2020). <em>Medidas de tendencia central. Una secuencia didáctica mediada por TIC</em>.</li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIBROS -->
+      <div class="pub-category-card">
+        <span class="tag">Libros</span>
+        <h3>Libros y capítulos</h3>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('libros2021', this.querySelector('.signo'))">
+            <span>Año 2021</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="libros2021" style="display:none;">
+            <ul class="pub-list">
+              <li>
+                Vallarino, E. A.; Urrutia, M. S.; Bértola, G. R.; Cecchi, F. A.; Chaparro, Mauro A.E.; et al. (2021).
+                <em>Playas sostenibles en Mar del Plata</em>.
+                Editorial de la Universidad Nacional de Mar del Plata.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVISTAS SIN REFERATO -->
+      <div class="pub-category-card">
+        <span class="tag">Artículos en revistas sin referato</span>
+        <h3>Otras producciones</h3>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('sinref2022', this.querySelector('.signo'))">
+            <span>Año 2022</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="sinref2022" style="display:none;">
+            <ul class="pub-list">
+              <li>Firpo, C.; Mauna, C.; Lértora, P.; Canales, C.; Chaparro, Mauro A.E.; Mango, V. (2022). <em>Evaluación de centolla y captura biológicamente aceptable...</em></li>
+              <li>Del Fiore, C. (2022). <em>Segmentación de imágenes SAR mediante el uso de redes neuronales convolucionales...</em></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pub-year">
+          <div class="pub-year-title" onclick="toggleBloque('divulgacion', this.querySelector('.signo'))">
+            <span>Divulgación y otras producciones</span>
+            <span class="signo">+</span>
+          </div>
+          <div id="divulgacion" style="display:none;">
+            <p class="muted" style="margin-top:0.8rem;">Próximamente.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <section class="section alt" id="novedades">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Novedades</h2>
+          <p>Actividades, convocatorias, eventos y producción reciente del grupo.</p>
+        </div>
+      </div>
+
+      <div class="news-grid">
+        <article class="card news-card">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Convocatoria GEAD">
+          <div class="news-body">
+            <span class="tag">Convocatoria</span>
+            <h3>Abierta la inscripción para colaboradores</h3>
+            <p class="muted">Sumate a proyectos de análisis de datos, optimización, modelización y aprendizaje automático.</p>
+          </div>
+        </article>
+
+        <article class="card news-card">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Seminario GEAD">
+          <div class="news-body">
+            <span class="tag">Evento</span>
+            <h3>Seminario sobre aprendizaje automático aplicado</h3>
+            <p class="muted">Charlas con investigadores invitados y presentación de resultados recientes del grupo.</p>
+          </div>
+        </article>
+
+        <article class="card news-card">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Publicación reciente">
+          <div class="news-body">
+            <span class="tag">Difusión</span>
+            <h3>Nueva publicación en revista internacional</h3>
+            <p class="muted">Resultados recientes en modelización, optimización y análisis estadístico aplicado.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h2 style="margin:0 0 0.5rem; color:white;">
+            ¿Querés contactarte con nosotros?
+          </h2>
+          <p style="margin:0; color:rgba(255,255,255,0.9);">
+            Si tenés consultas, propuestas de colaboración o interés en nuestras líneas de investigación, no dudes en escribirnos.
+          </p>
+        </div>
+        <a class="btn" href="#contacto" style="background:white;color:var(--primary);">
+          Ir a contacto
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="contacto">
+    <div class="footer-top">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="card" style="background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.08); color:white; box-shadow:none;">
+            <h3 style="margin-top:0; color:white;">Contacto</h3>
+                            <p style="margin-bottom:0.5rem;">
+              <a href="mailto:gead.lab@gmail.com">gead.lab@gmail.com</a>
+            </p>
+            <p style="margin-bottom:0; color:rgba(255,255,255,0.92);">
+              <strong>Grupo de Estadística y Aprendizaje con Datos</strong><br>
+              Departamento de Matemática · FCEyN · UNMdP
+            </p>
+          </div>
+
+          </div>
+      </div>
+    </div>
+
+    <div class="container" style="padding-top:1.5rem;">
+      <div>© GEAD · Universidad Nacional de Mar del Plata</div>
+      <div>Sitio del grupo de investigación</div>
+    </div>
+  </footer>
+</body>
+</html>

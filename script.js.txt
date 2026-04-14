@@ -1,0 +1,29 @@
+// Año en footer
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Última actualización (solo del navegador)
+document.getElementById("lastUpdate").textContent =
+  new Date().toLocaleDateString("es-AR", { year: "numeric", month: "long", day: "numeric" });
+
+// Menú móvil
+const btnMenu = document.getElementById("btnMenu");
+const menuMobile = document.getElementById("menuMobile");
+
+btnMenu.addEventListener("click", () => {
+  menuMobile.classList.toggle("open");
+});
+
+// Cerrar menú al tocar un link
+menuMobile.querySelectorAll("a").forEach((a) => {
+  a.addEventListener("click", () => menuMobile.classList.remove("open"));
+});
+
+// Formulario (demo: no envía a ningún lado)
+const form = document.getElementById("contactForm");
+const formMsg = document.getElementById("formMsg");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  formMsg.textContent =
+    "Mensaje listo. Para que realmente se envíe, hay que conectar un servicio (Formspree, Google Forms, backend, etc.).";
+});
