@@ -3,173 +3,177 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dr. Iván L. Degano </title>
+  <title>Lic. María Milagros Echeverría</title>
+
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
       margin: 0;
-      background-color: #f7f9fb;
+      background: #f7f9fb;
       color: #2c3e50;
     }
+
     .container {
       max-width: 1000px;
       margin: auto;
       padding: 40px 20px;
     }
+
     .header {
       display: flex;
       align-items: center;
-      gap: 20px;
-      border-bottom: 2px solid #e1e4e8;
-      padding-bottom: 20px;
+      gap: 25px;
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
     }
+
     .header img {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
     }
+
     .header h1 {
       margin: 0;
-      font-size: 28px;
+      font-size: 30px;
+      color: #1f3d3a;
     }
+
     .header p {
-      margin: 5px 0;
+      margin: 6px 0;
       color: #555;
     }
+
     .links a {
-      margin-right: 10px;
+      color: #2c7a7b;
       text-decoration: none;
-      color: #1a73e8;
-      font-size: 14px;
+      font-weight: 600;
     }
+
     .section {
-      margin-top: 30px;
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      margin-bottom: 22px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
     }
+
     .section h2 {
-      font-size: 20px;
-      border-left: 4px solid #1a73e8;
-      padding-left: 10px;
+      margin-top: 0;
+      font-size: 21px;
+      border-left: 5px solid #2c7a7b;
+      padding-left: 12px;
+      color: #1f3d3a;
     }
+
     .tags span {
       display: inline-block;
-      background: #e8f0fe;
-      color: #1a73e8;
-      padding: 5px 10px;
-      border-radius: 15px;
-      margin: 5px 5px 0 0;
-      font-size: 13px;
+      background: #e6f4f1;
+      color: #1f6f68;
+      padding: 7px 12px;
+      border-radius: 18px;
+      margin: 5px;
+      font-size: 14px;
     }
+
     .timeline div {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
-    .skills div {
+
+    li {
       margin-bottom: 8px;
     }
-    .bar {
-      background: #e1e4e8;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    .bar span {
-      display: block;
-      height: 8px;
-      background: #1a73e8;
+
+    @media (max-width: 700px) {
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
+
 <body>
-<div class="section">
-  <h2>Bio</h2>
-  <p>
-    Licenciada en Ciencias Matemáticas y Profesora en Matemática por la Universidad Nacional de Mar del Plata, con formación en Ciencia de Datos, Aprendizaje Automático y análisis computacional.
-  </p>
-  <p>
-    Su trabajo se orienta al desarrollo de modelos predictivos para datos complejos, con énfasis en selección de características, modelos gráficos, aprendizaje automático y análisis de series temporales. Actualmente participa en proyectos vinculados a la estimación temprana de indicadores económicos regionales, especialmente el Producto Bruto Geográfico, a partir de datos de alta frecuencia.
-  </p>
-</div>
 
-<div class="section">
-  <h2>Áreas de investigación</h2>
-  <div class="tags">
-    <span>Aprendizaje Automático</span>
-    <span>Ciencia de Datos</span>
-    <span>Nowcasting</span>
-    <span>Series Temporales</span>
-    <span>Graphical Lasso</span>
-    <span>Selección de Variables</span>
-    <span>Modelos Predictivos</span>
-    <span>Indicadores Económicos Regionales</span>
+  <div class="container">
+
+    <div class="header">
+      <img src="milagros.jpg" alt="María Milagros Echeverría">
+      <div>
+        <h1>Lic. María Milagros Echeverría</h1>
+        <p>Docente universitaria | Ciencia de Datos y Aprendizaje Automático</p>
+        <p>Universidad Nacional de Mar del Plata</p>
+        <div class="links">
+          <a href="mailto:mili.echev98@gmail.com">mili.echev98@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Bio</h2>
+      <p>
+        Licenciada en Ciencias Matemáticas y Profesora en Matemática por la Universidad Nacional de Mar del Plata, con formación en Ciencia de Datos, Aprendizaje Automático y análisis computacional.
+      </p>
+      <p>
+        Su trabajo se orienta al desarrollo de modelos predictivos para datos complejos, con énfasis en selección de características, modelos gráficos, aprendizaje automático y análisis de series temporales. Actualmente participa en proyectos vinculados a la estimación temprana de indicadores económicos regionales, especialmente el Producto Bruto Geográfico, a partir de datos de alta frecuencia.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Áreas de investigación</h2>
+      <div class="tags">
+        <span>Aprendizaje Automático</span>
+        <span>Ciencia de Datos</span>
+        <span>Nowcasting</span>
+        <span>Series Temporales</span>
+        <span>Graphical Lasso</span>
+        <span>Selección de Variables</span>
+        <span>Modelos Predictivos</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Líneas de trabajo</h2>
+      <ul>
+        <li>Estimación temprana del Producto Bruto Geográfico mediante aprendizaje automático.</li>
+        <li>Modelado de indicadores económicos regionales a partir de datos mensuales y anuales.</li>
+        <li>Selección de características en problemas de alta dimensión mediante modelos gráficos.</li>
+        <li>Aplicación de redes neuronales y técnicas de inteligencia artificial a problemas reales.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Proyectos destacados</h2>
+      <ul>
+        <li>Estimación temprana de la actividad económica regional con herramientas de aprendizaje automático: el caso del PBG en General Pueyrredon.</li>
+        <li>Ciencia de Datos y modelado estadístico en ambientes urbanos y naturales.</li>
+        <li>Construcción de modelos para realizar predicciones con selección de características utilizando un modelo gráfico Lasso.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Trayectoria académica</h2>
+      <div class="timeline">
+        <div><strong>2025–presente:</strong> Profesora Adjunta, Universidad Nacional de Mar del Plata.</div>
+        <div><strong>2025–presente:</strong> Integrante del proyecto sobre estimación temprana del PBG regional.</div>
+        <div><strong>2023:</strong> Diplomada en Ciencias de Datos, Aprendizaje Automático y sus Aplicaciones.</div>
+        <div><strong>2022–2023:</strong> Becaria de investigación en modelos predictivos con Graphical Lasso.</div>
+        <div><strong>2022:</strong> Licenciada en Ciencias Matemáticas y Profesora en Matemática.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Distinciones</h2>
+      <ul>
+        <li>Mención en las 32° Jornadas de Jóvenes Investigadores AUGM, Universidad Nacional de Tucumán, 2025.</li>
+      </ul>
+    </div>
+
   </div>
-</div>
-
-<div class="section">
-  <h2>Líneas de trabajo</h2>
-  <ul>
-    <li>Estimación temprana del Producto Bruto Geográfico mediante aprendizaje automático.</li>
-    <li>Modelado de indicadores económicos regionales a partir de datos mensuales y anuales.</li>
-    <li>Selección de características en problemas de alta dimensión mediante modelos gráficos.</li>
-    <li>Aplicación de redes neuronales y técnicas de inteligencia artificial a problemas reales.</li>
-    <li>Análisis, curación y procesamiento de datos económicos, sociales y territoriales.</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>Proyectos destacados</h2>
-  <ul>
-    <li>Estimación temprana de la actividad económica regional con herramientas de aprendizaje automático: el caso del PBG en el partido de General Pueyrredon.</li>
-    <li>Ciencia de Datos y modelado estadístico en ambientes urbanos y naturales.</li>
-    <li>Construcción de modelos para realizar predicciones con selección de características utilizando un modelo gráfico Lasso.</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>Producción y presentaciones</h2>
-  <ul>
-    <li>Predicción de flujo vehicular utilizando Redes Neuronales y Selección de Características.</li>
-    <li>Construcción de modelos para realizar predicciones con selección de características utilizando un modelo gráfico Lasso.</li>
-    <li>Modelo de predicción de tráfico en la ciudad de Mar del Plata, seleccionando una ubicación óptima de puntos de medición.</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>Trayectoria académica</h2>
-  <div class="timeline">
-    <div><strong>2025–presente:</strong> Profesora Adjunta, Universidad Nacional de Mar del Plata.</div>
-    <div><strong>2025–presente:</strong> Integrante del proyecto sobre estimación temprana del PBG regional.</div>
-    <div><strong>2023:</strong> Diplomada en Ciencias de Datos, Aprendizaje Automático y sus Aplicaciones.</div>
-    <div><strong>2022–2023:</strong> Becaria de investigación en modelos predictivos con Graphical Lasso.</div>
-    <div><strong>2022:</strong> Licenciada en Ciencias Matemáticas y Profesora en Matemática.</div>
-  </div>
-</div>
-
-<div class="section">
-  <h2>Docencia universitaria</h2>
-  <ul>
-    <li>Análisis Matemático I</li>
-    <li>Métodos Numéricos</li>
-    <li>Espacios Métricos y Topológicos</li>
-    <li>Probabilidad y Estadística</li>
-    <li>Cálculo I y II</li>
-    <li>Introducción al Álgebra</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>Distinciones</h2>
-  <ul>
-    <li>Mención en las 32° Jornadas de Jóvenes Investigadores AUGM, Universidad Nacional de Tucumán, 2025.</li>
-  </ul>
-</div>
-
-<div class="section">
-  <h2>Actualmente</h2>
-  <ul>
-    <li>Desarrolla modelos de nowcasting para la estimación temprana del PBG regional.</li>
-    <li>Trabaja con datos de alta frecuencia para reconstrucción y predicción de indicadores económicos.</li>
-    <li>Aplica técnicas de aprendizaje automático, redes neuronales y selección de variables a problemas económicos y territoriales.</li>
-  </ul>
-</div>
 
 </body>
 </html>
